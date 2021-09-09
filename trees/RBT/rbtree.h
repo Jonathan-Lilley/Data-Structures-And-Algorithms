@@ -1,21 +1,22 @@
-#ifndef SB_BST_H
-#define SB_BST_H
+#ifndef RBTREE_H
+#define RBTREE_H
+
+enum color_t { BLACK, RED };
 
 typedef struct Node {
 	int val;
+	color_t color; // true = black, false = red
 	Node* left;
 	Node* right;
 } Node;
 
 Node* newNode(int);
 
-Node* cpNode(Node*);
+int numBlack(Node*);
 
 void addChild(Node*, int);
 
 void delTree(Node*);
-
-int treeDepth(Node*);
 
 void insertNode(Node*);
 
@@ -29,9 +30,8 @@ void printLowtoHigh(Node*);
 
 void printHightoLow(Node*);
 
-void printByLevel(Node*);
+void printByLevel(Node*, int);
 
-void getDepth(Node*);
 
 
 #endif

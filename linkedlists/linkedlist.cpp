@@ -1,6 +1,3 @@
-#ifndef LLMETHODS_H
-#define LLMETHODS_H
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -139,7 +136,3 @@ void hasLoop(Node* root, vector<Node*> ptrs){
 	ptrs.push_back(root);
 	hasLoop(root->child,ptrs);
 }
-
-
-
-#endif
