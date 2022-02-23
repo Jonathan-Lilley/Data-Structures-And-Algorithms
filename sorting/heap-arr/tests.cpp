@@ -10,7 +10,7 @@ int main(int argc, char** argv) {
 	int heap[max];
 	heap[0] = 0;
 	for(int i = 1; i < max; i++) {
-		heap[i] = rand() % 500;
+		heap[i] = rand() % 10;
 	}
 	time_t start;
 	time_t end;
