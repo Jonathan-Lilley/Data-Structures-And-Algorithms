@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 #include "huffman.h"
 
 using namespace std;
@@ -12,6 +13,8 @@ int main() {
 	valueReader(nodes,values);
 	Node* root = buildTree(nodes,count);
 	printTree(root);
+	map<char,int> freqMap = createMap(root);
+	
 	deleteTree(root);
-	cout << endl << endl;
+	cout << endl;
 }

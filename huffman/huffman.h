@@ -3,6 +3,7 @@
 #define MIN 32
 #define SPAN 95
 #include <string.h>
+#include <map>
 
 typedef struct Node {
 	char chval;
@@ -53,5 +54,7 @@ void charCounts(int[],std::string);
 int getCharCount(int[]);
 
 void valueReader(Node*[],int[]);
+
+std::map<char,int> createMap(Node*);
 
 #endif

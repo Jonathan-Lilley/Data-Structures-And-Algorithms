@@ -2,6 +2,7 @@
 #include <fstream>
 #include <math.h>
 #include <string.h>
+#include <map>
 #include "huffman.h"
 
 using namespace std;
@@ -127,7 +128,7 @@ int getDepth(Node* root) {
 }
 
 int getLeafNum(Node* root) {
-	return pow(2,getDepth(root)+2);
+	return pow(2,getDepth(root))+pow(2,getDepth(root)+1);
 }
 
 void printTree(Node* root) {
@@ -213,3 +214,36 @@ void valueReader(Node* nodes[], int values[]) {
 		}
 	}
 }
+
+map<char,int> createMap(Node* root) {
+	map<char,int> freqMap;
+	nQueue* queue = newQueue(getLeafNum(root));
+	enqueue(queue,root);
+	while(!qEmpty(queue)) {
+		root = dequeue(queue);
+		if(root->left) {
+			enqueue(queue,root->left);
+		}
+		if(root->right) {
+			enqueue(queue,root->right);
+		}
+		else {
+			freqMap.insert(pair<char,int>(root->chval,root->ival));
+		}
+	}
+	delete queue;
+	return freqMap;
+}
+
+int fileLen(string filename) {
+	ifstream inFile;
+	inFile.open(filename);
+	int count = 0;
+	char c;
+	while(inFile.get(c)) {
+		count++;
+	}
+	return count;
+}
+
+int
